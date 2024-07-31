@@ -118,7 +118,7 @@ private fun DeleteButton(
         IconButton(onClick = {
             viewModel.deleteNote(note)
             viewModel.cleanParameters()
-            navController.navigate(Screen.MainScreen.route)
+            navController.popBackStack()
         }) {
             Icon(imageVector = Icons.Rounded.Delete, contentDescription = null)
         }
@@ -157,7 +157,7 @@ private fun CancelOrSaveButtons(
     ) {
         OutlinedButton(onClick = {
             viewModel.cleanParameters()
-            navController.navigate(Screen.MainScreen.route)
+            navController.popBackStack()
         }, modifier = Modifier.width(96.dp)) {
             Text(text = "Cancel")
         }
@@ -171,7 +171,7 @@ private fun CancelOrSaveButtons(
                 )
             )
             viewModel.cleanParameters()
-            navController.navigate(Screen.MainScreen.route)
+            navController.popBackStack()
         }, modifier = Modifier.width(96.dp)) {
             if (note == null) Text(text = "Add") else Text(text = "Save")
         }
