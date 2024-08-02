@@ -5,7 +5,6 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import com.codingtho.notes.navigation.NotesAppNavigation
-import com.codingtho.notes.ui.screen.view.MainScreen
 import com.codingtho.notes.ui.theme.NotesTheme
 import dagger.hilt.android.AndroidEntryPoint
 

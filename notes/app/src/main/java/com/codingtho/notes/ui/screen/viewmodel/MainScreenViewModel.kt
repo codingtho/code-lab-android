@@ -14,7 +14,7 @@ import javax.inject.Inject
 @HiltViewModel
 class MainScreenViewModel @Inject constructor(
     private val repository: NoteRepository
-): ViewModel() {
+) : ViewModel() {
     private val _notes: MutableStateFlow<List<Note>> = MutableStateFlow(emptyList())
     val notes: StateFlow<List<Note>> get() = _notes.asStateFlow()
 

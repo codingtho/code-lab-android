@@ -45,10 +45,11 @@ private fun ShowNote(note: Note, navController: NavController) {
             .fillMaxWidth()
             .padding(16.dp)
             .background(color = Color.DarkGray, shape = RoundedCornerShape(8.dp))
-            .clickable(onClick = {
-                val json = Gson().toJson(note)
-                navController.navigate("add_or_edit?note=$json")
-            })
+            .clickable(
+                onClick = {
+                    val json = Gson().toJson(note)
+                    navController.navigate("add_or_edit?note=$json")
+                })
     ) {
         Text(
             text = note.title,

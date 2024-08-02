@@ -14,7 +14,7 @@ import javax.inject.Inject
 @HiltViewModel
 class AddOrEditScreenViewModel @Inject constructor(
     private val repository: NoteRepository
-): ViewModel() {
+) : ViewModel() {
     private val _title: MutableStateFlow<String> = MutableStateFlow("")
     val title: StateFlow<String> get() = _title.asStateFlow()
 
@@ -26,9 +26,9 @@ class AddOrEditScreenViewModel @Inject constructor(
         _body.value = note.body ?: ""
     }
 
-   fun updateTitle(title: String) {
-       _title.value = title
-   }
+    fun updateTitle(title: String) {
+        _title.value = title
+    }
 
     fun updateBody(body: String) {
         _body.value = body

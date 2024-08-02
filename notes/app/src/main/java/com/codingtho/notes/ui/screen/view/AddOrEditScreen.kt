@@ -115,11 +115,15 @@ private fun DeleteButton(
             .height(24.dp),
         horizontalArrangement = Arrangement.End
     ) {
-        IconButton(onClick = {
-            viewModel.deleteNote(note)
-            viewModel.cleanParameters()
-            navController.popBackStack()
-        }) {
+        IconButton(
+            onClick = {
+                viewModel.deleteNote(note)
+                viewModel.cleanParameters()
+                navController.navigate(Screen.MainScreen.route) {
+                    popUpTo(Screen.MainScreen.route) { inclusive = true }
+                }
+            }
+        ) {
             Icon(imageVector = Icons.Rounded.Delete, contentDescription = null)
         }
     }
@@ -155,24 +159,34 @@ private fun CancelOrSaveButtons(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
-        OutlinedButton(onClick = {
-            viewModel.cleanParameters()
-            navController.popBackStack()
-        }, modifier = Modifier.width(96.dp)) {
+        OutlinedButton(
+            onClick = {
+                viewModel.cleanParameters()
+                navController.navigate(Screen.MainScreen.route) {
+                    popUpTo(Screen.MainScreen.route) { inclusive = true }
+                }
+            },
+            modifier = Modifier.width(96.dp)
+        ) {
             Text(text = "Cancel")
         }
 
-        FilledTonalButton(onClick = {
-            viewModel.loadNote(
-                Note(
-                    id = note?.id ?: 0,
-                    title = viewModel.title.value.ifBlank { "Title" },
-                    body = viewModel.body.value.ifBlank { null }
+        FilledTonalButton(
+            onClick = {
+                viewModel.loadNote(
+                    Note(
+                        id = note?.id ?: 0,
+                        title = viewModel.title.value.ifBlank { "Title" },
+                        body = viewModel.body.value.ifBlank { null }
+                    )
                 )
-            )
-            viewModel.cleanParameters()
-            navController.popBackStack()
-        }, modifier = Modifier.width(96.dp)) {
+                viewModel.cleanParameters()
+                navController.navigate(Screen.MainScreen.route) {
+                    popUpTo(Screen.MainScreen.route) { inclusive = true }
+                }
+            },
+            modifier = Modifier.width(96.dp)
+        ) {
             if (note == null) Text(text = "Add") else Text(text = "Save")
         }
     }
